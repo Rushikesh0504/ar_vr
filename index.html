@@ -13,7 +13,7 @@
     <div class="container">
         <header>
             <h1>🔍 AR Image Scanner</h1>
-            <p>Point your camera at an image to see augmented reality content</p>
+            <p>Point your camera at images to see augmented reality content</p>
         </header>
 
         <div class="controls">
@@ -27,21 +27,44 @@
             <ol>
                 <li>Click "Start AR Experience"</li>
                 <li>Allow camera access when prompted</li>
-                <li>Point your camera at a flat surface or image</li>
+                <li>Point your camera at any of the sample images below</li>
                 <li>Watch as 3D objects appear in augmented reality!</li>
             </ol>
             
             <div class="sample-images">
-                <h4>Sample Images to Try:</h4>
+                <h4>Images You Can Scan:</h4>
                 <div class="image-grid">
                     <div class="sample-image">
                         <img src="https://ar-js-org.github.io/AR.js/data/images/HIRO.jpg" alt="Hiro Marker">
                         <span>Hiro Marker</span>
+                        <small>Shows: Rotating cube, sphere, cylinder</small>
                     </div>
                     <div class="sample-image">
                         <img src="https://ar-js-org.github.io/AR.js/data/images/kanji.jpg" alt="Kanji Marker">
                         <span>Kanji Marker</span>
+                        <small>Shows: 3D text and torus</small>
                     </div>
+                    <div class="sample-image">
+                        <img src="https://ar-js-org.github.io/AR.js/data/images/letterA.jpg" alt="Letter A">
+                        <span>Letter A</span>
+                        <small>Shows: Animated sphere</small>
+                    </div>
+                    <div class="sample-image">
+                        <img src="https://ar-js-org.github.io/AR.js/data/images/letterB.jpg" alt="Letter B">
+                        <span>Letter B</span>
+                        <small>Shows: Rotating cube</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-upload">
+                <h4>📱 Print These Images:</h4>
+                <p>Download and print these images to test AR scanning:</p>
+                <div class="download-links">
+                    <a href="https://ar-js-org.github.io/AR.js/data/images/HIRO.jpg" download class="btn small">Download Hiro</a>
+                    <a href="https://ar-js-org.github.io/AR.js/data/images/kanji.jpg" download class="btn small">Download Kanji</a>
+                    <a href="https://ar-js-org.github.io/AR.js/data/images/letterA.jpg" download class="btn small">Download Letter A</a>
+                    <a href="https://ar-js-org.github.io/AR.js/data/images/letterB.jpg" download class="btn small">Download Letter B</a>
                 </div>
             </div>
         </div>
@@ -85,6 +108,35 @@
                              radius-tubular="0.1" 
                              material="color: #FF6B6B;">
                     </a-torus>
+                </a-marker>
+
+                <!-- Letter A Marker -->
+                <a-marker preset="letterA">
+                    <a-sphere position="0 0.5 0" 
+                              radius="0.3" 
+                              material="color: #9C27B0;"
+                              animation="property: scale; to: 1.5 1.5 1.5; dur: 1000; easing: easeInOutQuad; direction: alternate; loop: true">
+                    </a-sphere>
+                    <a-text value="A" 
+                            position="0 1.2 0" 
+                            align="center" 
+                            color="#FFFFFF" 
+                            scale="0.8 0.8 0.8">
+                    </a-text>
+                </a-marker>
+
+                <!-- Letter B Marker -->
+                <a-marker preset="letterB">
+                    <a-box position="0 0.5 0" 
+                           material="color: #FF9800;"
+                           animation="property: rotation; to: 0 360 0; dur: 3000; easing: linear; loop: true">
+                    </a-box>
+                    <a-text value="B" 
+                            position="0 1.2 0" 
+                            align="center" 
+                            color="#FFFFFF" 
+                            scale="0.8 0.8 0.8">
+                    </a-text>
                 </a-marker>
 
                 <!-- Camera Entity -->
