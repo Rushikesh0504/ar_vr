@@ -79,6 +79,7 @@ class ARScanner {
             
             // Wait for scene to load
             this.scene.addEventListener('loaded', () => {
+                console.log('AR Scene loaded successfully');
                 loading.style.display = 'none';
                 this.isARActive = true;
                 startBtn.style.display = 'none';
@@ -89,11 +90,35 @@ class ARScanner {
                 this.addMarkerEvents();
             });
 
+            // Add timeout to prevent infinite loading
+            setTimeout(() => {
+                if (loading.style.display !== 'none') {
+                    console.log('AR Scene loading timeout - forcing display');
+                    loading.style.display = 'none';
+                    this.isARActive = true;
+                    startBtn.style.display = 'none';
+                    stopBtn.style.display = 'inline-block';
+                    status.textContent = 'AR Active - Point camera at markers';
+                    this.addMarkerEvents();
+                }
+            }, 10000); // 10 second timeout
+
             // Handle scene errors
             this.scene.addEventListener('error', (error) => {
                 console.error('AR Scene error:', error);
+                loading.style.display = 'none';
                 this.stopAR();
                 status.textContent = 'Error initializing AR scene';
+            });
+
+            // Add scene ready event
+            this.scene.addEventListener('renderstart', () => {
+                console.log('AR Scene render started');
+            });
+
+            // Add camera ready event
+            this.scene.addEventListener('camera-ready', () => {
+                console.log('AR Camera ready');
             });
 
         } catch (error) {
@@ -168,6 +193,10 @@ class ARScanner {
             status.textContent = 'Hiro marker detected! 3D objects visible.';
         } else if (preset === 'kanji') {
             status.textContent = 'Kanji marker detected! Text and torus visible.';
+        } else if (preset === 'letterA') {
+            status.textContent = 'Letter A detected! Animated sphere visible.';
+        } else if (preset === 'letterB') {
+            status.textContent = 'Letter B detected! Rotating cube visible.';
         }
 
         // Add success sound (optional)
