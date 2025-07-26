@@ -150,6 +150,52 @@ header p {
     color: #333;
 }
 
+.sample-image small {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.custom-upload {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 2px dashed #dee2e6;
+}
+
+.custom-upload h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.custom-upload p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.download-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn.small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn.small:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
 .ar-scene {
     position: fixed;
     top: 0;
